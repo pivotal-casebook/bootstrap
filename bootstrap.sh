@@ -118,13 +118,15 @@ else
     print_step "RVM already installed"
   fi
 fi
-DOT_PROFILE_RVM=`grep rvm ~/.profile`
-if [ $? -eq 0 ]; then
-    source ~/.profile
-    RVM_ENV_VARS="~/.profile"
+if test -e ~/.profile && grep rvm ~/.profile; then
+  source ~/.profile
+  RVM_ENV_VARS="~/.profile"
+elif test -e ~/.bashrc && grep rvm ~/.bashrc; then
+  source ~/.bashrc
+  RVM_ENV_VARS="~/.bashrc"
 else
-    source ~/.bash_profile
-    RVM_ENV_VARS="~/.bash_profile"
+  source ~/.bash_profile
+  RVM_ENV_VARS="~/.bash_profile"
 fi
 
 rvm list | grep ${RVM_RUBY_VERSION}
