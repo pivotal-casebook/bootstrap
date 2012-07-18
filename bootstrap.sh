@@ -3,12 +3,8 @@
 BOOTSTRAP_BASE="https://github.com/pivotal-casebook/bootstrap"
 BOOTSTRAP_BIN="${BOOTSTRAP_BASE}/raw/master/bin/bootstrap.sh"
 BOOTSTRAPRC="${HOME}/.brewstraprc"
-RVM_URL="https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer"
-RVM_MIN_VERSION="185"
-RVM_RUBY_VERSION="ruby-1.9.3-p125"
 RBENV_RUBY_VERSION="1.9.3-p125"
 CHEF_DEPENDENCIES="zlib zlib-devel"
-RVM_DEPENDENCIES="bzip2"
 CHEF_SOLO_DEPENDENCIES="openssl openssl-devel"
 PKG_INSTALLER="sudo yum -y"
 GEM_INSTALL_FLAGS="--no-ri --no-rdoc"
@@ -33,7 +29,7 @@ function print_error() {
 echo -e "\033[1m\nStarting brewstrap...\033[0m\n"
 echo -e "\n"
 echo -e "Brewstrap will make sure your machine is bootstrapped and ready to run chef"
-echo -e "by making sure curl, RVM and chef are installed. From there it will"
+echo -e "by making sure curl, rbenv and chef are installed. From there it will"
 echo -e "kick off a chef-solo run using whatever chef repository of cookbooks you point it at."
 echo -e "\n"
 echo -e "It expects the chef repo to exist as a public or private repository on github.com"
@@ -48,7 +44,6 @@ print_step "Installing required packages..."
 # sudo echo "Defaults !env_reset" > /etc/sudoers
 
 [[ -z "$SKIP_YUM_UPDATE" ]] && $PKG_INSTALLER update
-$PKG_INSTALLER install $RVM_DEPENDENCIES
 $PKG_INSTALLER install $CHEF_DEPENDENCIES
 $PKG_INSTALLER install $CHEF_SOLO_DEPENDENCIES
 
