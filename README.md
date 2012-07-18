@@ -1,7 +1,7 @@
 Bootstrap
 =========
 
-Debian RVM + Chef Solo
+CentOs RVM + Chef Solo
 
     curl https://raw.github.com/pivotal-casebook/bootstrap/master/bootstrap.sh > /tmp/bootstrap.sh && bash /tmp/bootstrap.sh
 
