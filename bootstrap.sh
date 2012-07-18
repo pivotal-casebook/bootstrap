@@ -38,10 +38,8 @@ echo -e "You will need your github credentials so now might be a good time to lo
 [[ -s "$BOOTSTRAPRC" ]] && source "$BOOTSTRAPRC"
 
 print_step "Installing required packages..."
-# sudo mv /usr/bin/sudo /usr/bin/sudo-1.6
-# rpm -ivh /tmp/sudo.rpm
 
-# sudo echo "Defaults !env_reset" > /etc/sudoers
+sudo echo "Defaults !env_reset" >> /etc/sudoers
 
 [[ -z "$SKIP_YUM_UPDATE" ]] && $PKG_INSTALLER update
 $PKG_INSTALLER install $CHEF_DEPENDENCIES
