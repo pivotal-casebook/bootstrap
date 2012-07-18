@@ -191,7 +191,7 @@ print_step "Kicking off chef-solo (password will be your local user password)"
 USER_HOME=$HOME
 
 CHEF_COMMAND="GITHUB_PASSWORD=$GITHUB_PASSWORD GITHUB_LOGIN=$GITHUB_LOGIN chef-solo -j /tmp/chef/node.json -c /tmp/chef/solo.rb"
-sudo -E env ${CHEF_COMMAND}
+sudo env ${CHEF_COMMAND}
 if [ ! $? -eq 0 ]; then
   print_error "BREWSTRAP FAILED!"
 else
