@@ -39,10 +39,8 @@ echo -e "You will need your github credentials so now might be a good time to lo
 
 print_step "Installing required packages..."
 
-if [ -z sudo grep "\!env_reset" /etc/sudoers ]; then
-  print_step "Configuring sudo"
-  sudo /bin/bash -c "echo 'Defaults !env_reset' >> /etc/sudoers"
-fi
+print_step "Configuring sudo"
+sudo /bin/bash -c "sudo sed -ibak 's/\senv_reset/!env_reset/' /etc/sudoers"
 
 [[ -z "$SKIP_YUM_UPDATE" ]] && $PKG_INSTALLER update
 $PKG_INSTALLER install $CHEF_DEPENDENCIES
