@@ -42,7 +42,7 @@ print_step "Installing required packages..."
 print_step "Configuring sudo"
 sudo /bin/bash -c "sudo sed -ibak 's/\senv_reset/!env_reset/' /etc/sudoers"
 
-# [[ -z "$SKIP_YUM_UPDATE" ]] && $PKG_INSTALLER update
+[[ -z "$SKIP_YUM_UPDATE" ]] && $PKG_INSTALLER update
 $PKG_INSTALLER install $CHEF_DEPENDENCIES
 $PKG_INSTALLER install $CHEF_SOLO_DEPENDENCIES
 
